@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useLibrary } from '../hooks/LibraryContext.jsx'
 import ProgressInput from '../components/ProgressInput.jsx'
 import RecordCard from '../components/RecordCard.jsx'
+import Cover from '../components/Cover.jsx'
 
 export default function BookPage() {
   const { id } = useParams()
@@ -31,10 +32,14 @@ export default function BookPage() {
 
   return (
     <div className="stack">
-      <div>
-        <h1 className="page-title">{book.title}</h1>
-        <p className="muted">{book.author}</p>
-        <ProgressInput book={book} />
+      <div className="book-head">
+        <Cover book={book} className="book-cover" />
+        <div className="book-meta">
+          <h1 className="page-title">{book.title}</h1>
+          <p className="muted">{book.author}</p>
+          {book.isbn && <p className="muted small">ISBN {book.isbn}</p>}
+          <ProgressInput book={book} />
+        </div>
       </div>
 
       <form className="card stack" onSubmit={onSubmit}>

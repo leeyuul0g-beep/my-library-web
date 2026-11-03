@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import ProgressInput from './ProgressInput.jsx'
+import Cover from './Cover.jsx'
 
 // 책을 누르면 그 줄 아래에 열리는 서랍
 export default function Drawer({ book, recordCount, onClose }) {
   const percent = book.pages ? Math.round((book.currentPage / book.pages) * 100) : 0
   return (
     <section className="drawer">
-      <div className={`drawer-cover spine-${book.color ?? 'cream'}`}>{book.title}</div>
+      <Cover book={book} className="drawer-cover" />
       <div className="drawer-body">
         <p className="eyebrow">서재에서 꺼낸 책</p>
         <h2>{book.title}</h2>
